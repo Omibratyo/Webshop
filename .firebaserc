@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webshop-46282": {
+      "hosting": {
+        "webshop": [
+          "webshop-46282"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webshop-46282"
+  }
+}
