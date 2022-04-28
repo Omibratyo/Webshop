@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { FirebaseAppModule, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -33,7 +33,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminProductsComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       { path: 'admin/orders', component: AdminOrdersComponent},
       { path: 'my/orders', component: MyOrdersComponent},
     ]),
-    //provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
