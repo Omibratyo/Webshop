@@ -22,4 +22,24 @@ export class UserService {
     console.log("macska");
   }
   
+  create(user: User) {
+    return this.afs.collection<User>(this.collectionName).doc(user.id).set(user);
+  }
+
+  getAll() {
+    return this.afs.collection<User>(this.collectionName).valueChanges();
+  }
+
+  getById(id: string) {
+    return this.afs.collection<User>(this.collectionName).doc(id).valueChanges();
+  }
+
+  update(user: User) {
+    return this.afs.collection<User>(this.collectionName).doc(user.id).set(user);
+  }
+
+  delete(id: string) {
+    return this.afs.collection<User>(this.collectionName).doc(id).delete();
+  }
+
 }

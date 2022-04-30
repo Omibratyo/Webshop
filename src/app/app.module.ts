@@ -1,3 +1,4 @@
+import { SignupComponent } from './signup/signup.component';
 import { UserService } from './shared/services/user.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,6 +26,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,7 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
       { path: 'login', component: LoginComponent},
+      { path: 'signup', component: SignupComponent},
       { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]},
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]},
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]},
