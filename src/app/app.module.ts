@@ -24,6 +24,8 @@ import { LoginComponent } from './login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
+import { SignupComponent } from './signup/signup.component';
+//import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -47,18 +50,18 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
       { path: '', component: HomeComponent},
       { path: 'products', component: ProductsComponent},
       { path: 'shopping-cart', component: ShoppingCartComponent},
-    { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
+      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
       { path: 'login', component: LoginComponent},
       { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]},
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]},
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]},
     ]),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    //provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    NgbModule,
+    NgbModule
   ],
   providers: [
     AuthService, 

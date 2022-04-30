@@ -1,13 +1,9 @@
 import { UserService } from '../services/user.service';
 import { Injectable } from '@angular/core';
-import { GoogleAuthProvider } from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { FirebaseError } from '@angular/fire/app';
-import { authInstanceFactory } from '@angular/fire/auth/auth.module';
-import {AngularFireDatabase} from '@angular/fire/compat/database';
 @Injectable({
   providedIn: 'root',
 })
@@ -31,5 +27,6 @@ export class AuthService {
   logout(){
     this.afAuth.signOut();
   }
+  
 }
 

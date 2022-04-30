@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private userService: UserService, private auth: AuthService, router: Router) {
     auth.user$.subscribe(user => {
       if (!user) return; 
-
+      console.log("kutya");
       userService.save(user);
 
       let returnUrl = localStorage.getItem('returnUrl');
