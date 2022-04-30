@@ -1,3 +1,4 @@
+import { UserService } from './shared/services/user.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -23,9 +24,6 @@ import { LoginComponent } from './login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
-import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
-
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 @NgModule({
   declarations: [
@@ -49,22 +47,23 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
       { path: '', component: HomeComponent},
       { path: 'products', component: ProductsComponent},
       { path: 'shopping-cart', component: ShoppingCartComponent},
-      { path: 'check-out', component: CheckOutComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+    { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
+      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
       { path: 'login', component: LoginComponent},
-      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
+      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]},
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]},
+      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]},
     ]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    NgbModule
+    NgbModule,
   ],
   providers: [
     AuthService, 
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
