@@ -19,7 +19,6 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -33,6 +32,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -46,7 +47,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminProductsComponent,
-    AdminOrdersComponent,
     LoginComponent,
     SignupComponent
   ],
@@ -63,7 +63,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'login', component: LoginComponent},
       { path: 'signup', component: SignupComponent},
       { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]},
-      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]},
+      { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService]},
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]},
     ]),
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -78,7 +78,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatProgressSpinnerModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [
     AuthService, 

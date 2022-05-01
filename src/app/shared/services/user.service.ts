@@ -1,9 +1,10 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase} from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireObject} from '@angular/fire/compat/database';
 import firebase from 'firebase/compat/app';
 import { AngularFirestore} from '@angular/fire/compat/firestore';
 import { User } from '../models/User';
+import { AppUser } from '../models/app-user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,11 @@ export class UserService {
       email: user.email
     });
     console.log("macska");
+  }
+
+  get(uid: string){
+    //return this.db.object('/users' + uid);
+    return this.afs.collection<AppUser>(this.collectionName).doc(uid).valueChanges();
   }
   
   create(user: User) {

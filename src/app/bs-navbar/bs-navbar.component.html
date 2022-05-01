@@ -18,7 +18,6 @@
                 <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.displayName || user.email }}</a>
                 <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" routerLink="/my/orders">Rendeléseim</a>
-                    <a class="dropdown-item" routerLink="/admin/orders">Rendelések kezelése</a>
                     <a class="dropdown-item" routerLink="/admin/products">Termékek kezelése</a>
                     <a class="dropdown-item" (click)="logout()">Kijelentkezés</a>
                 </div>

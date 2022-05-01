@@ -4,11 +4,13 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AppUser } from '../models/app-user';
+import { switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  user$: Observable<firebase.User | null>;
+  user$: Observable<firebase.User |null>;
   constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public route: ActivatedRoute,
@@ -18,7 +20,6 @@ export class AuthService {
     this.user$ = afAuth.authState;
   }
 
-  
   login() {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
