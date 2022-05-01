@@ -15,7 +15,7 @@
             </li>
             </ng-template>
             <li ngbDropdown *ngIf="authService.user$ | async as user; else anonymousUser" class="nav-item dropdown">
-                <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.displayName }}</a>
+                <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.displayName || user.email }}</a>
                 <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" routerLink="/my/orders">Rendeléseim</a>
                     <a class="dropdown-item" routerLink="/admin/orders">Rendelések kezelése</a>
