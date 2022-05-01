@@ -35,7 +35,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import {MatIconModule} from '@angular/material/icon';
 
-
 @NgModule({
   declarations: [
     AppComponent,
