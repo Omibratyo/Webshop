@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { AngularFireStorage } from '@angular/fire/compat/storage'
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Products } from '../models/Products';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class SharingService{
+export class SharingService {
     private data:any = undefined;
 
     setData(data:any){

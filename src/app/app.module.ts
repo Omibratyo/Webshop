@@ -1,3 +1,4 @@
+import { SharingService } from './shared/services/sharing.service';
 import { SignupComponent } from './signup/signup.component';
 import { UserService } from './shared/services/user.service';
 import { NgModule } from '@angular/core';
@@ -34,6 +35,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import {MatIconModule} from '@angular/material/icon';
+import { UpdateProductsComponent } from './update-products/update-products.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import {MatIconModule} from '@angular/material/icon';
     MyOrdersComponent,
     AdminProductsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UpdateProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,8 @@ import {MatIconModule} from '@angular/material/icon';
   providers: [
     AuthService, 
     AuthGuardService,
-    UserService
+    UserService,
+    SharingService
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

@@ -12,16 +12,19 @@ import { ProductsService } from '../shared/services/products.service';
 })
 export class ProductsComponent implements OnInit {
 
+  loggedInUser?: firebase.default.User | null;
   id: any;
   postString: any;
   products: Array<Products> = [];
+  product: any;
 
   productsId: any;
 
   constructor(  
     private route: ActivatedRoute,
     private productsService: ProductsService,
-    private sharingService: SharingService) { }
+    private sharingService: SharingService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.productsId = this.sharingService.getData();
@@ -32,6 +35,13 @@ export class ProductsComponent implements OnInit {
 
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
+    });
+
+    this.authService.isUserLoggedIn().subscribe(user => {
+      //console.log(user);
+      this.loggedInUser = user;
+    }, error => {
+      console.error(error);
     });
   }
 

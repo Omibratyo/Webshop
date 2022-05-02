@@ -50,14 +50,34 @@ export class HomeComponent implements OnInit {
 
   productId: any; 
   products: Array<Products> = [];
+  loggedInUser?: firebase.default.User | null;
 
-  constructor(/**private router: Router,
+  constructor(private router: Router,
     private productsService: ProductsService,
-    private SharingService: SharingService*/
-    //ezeket miatt circular
+    private SharingService: SharingService,
+    private authService: AuthService,
     ) { }
 
   ngOnInit(): void {
+    this.productsService.loadProducts().subscribe(data =>{
+      this.products = data;
+    });
+
+    
+    
+    this.authService.isUserLoggedIn().subscribe(user => {
+      this.loggedInUser = user;
+    }, error => {
+      console.error(error);
+    });
+  }
+
+   getProductsId(product: any){
+    this.productId = product.id;
+    this.SharingService.setData(this.productId);
+   console.log(this.productId);
+
+   this.router.navigateByUrl('/products');
   }
 
 }

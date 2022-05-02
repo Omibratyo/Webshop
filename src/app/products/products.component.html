@@ -1,1 +1,25 @@
 <p>products works!</p>
+<div  class="grid-container">
+    <mat-card  class="dashboard-card" *ngFor="let product of products">
+        <mat-card-header >
+            <mat-card-title>
+                {{ product.title }}
+            </mat-card-title>
+        </mat-card-header>  
+        <mat-card-content class="dashboard-card-content">
+            <div class="card_text">{{ product.description }}</div>
+            <br>
+        </mat-card-content>
+
+        <mat-card-content class="dashboard-card-content">
+            <div class="card_text">{{ product.oldPrice }}</div>
+        </mat-card-content>
+        <mat-card-content class="dashboard-card-content">
+            <div class="card_text"> <p>Written By: </p>{{ product.price }}</div>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <button *ngIf="loggedInUser" mat-raised-button color="primary" (click)="changeComponent()" [routerLink]="'/update-products'">Update post</button>
+    <button *ngIf="loggedInUser"  mat-raised-button color="warn" (click)="delete(productsId)" [routerLink]="'/home'">Delete post</button>
+
+</div>
