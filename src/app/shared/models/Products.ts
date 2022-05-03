@@ -4,4 +4,5 @@ export interface Products {
     oldPrice?:number;
     price: number;
     description: string;
+    image_url: string;
 }

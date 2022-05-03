@@ -1,3 +1,4 @@
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -13,7 +14,9 @@ export class ProductsService {
   collectionName = 'Products';
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private storage: AngularFireStorage,
+    private db: AngularFireDatabase
   ) { }
 
   loadProducts(){
@@ -22,7 +25,7 @@ export class ProductsService {
 
 
   getProductsById(Id: string) {
-    return this.afs.collection<Products>(this.collectionName, ref => ref.where('id', '==', Id).orderBy('id', 'desc')).valueChanges();
+    return this.afs.collection<Products>(this.collectionName, ref => ref.where('id', '==', Id).orderBy('price', 'desc')).valueChanges();
   }
 
   async update(products: Products) {
@@ -38,6 +41,12 @@ export class ProductsService {
     return this.afs.collection<Products>(this.collectionName).doc(products.id).set(products);
   }
 
-  
+  loadImageMeta(metaUrl: string): Observable<Array<Products>> {
+    return this.afs.collection<Products>(this.collectionName).valueChanges();
+  }
+
+  loadImage(imageUrl: string) {
+    return this.storage.ref(imageUrl).getDownloadURL();
+  }
 
 }

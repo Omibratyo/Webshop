@@ -36,6 +36,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import {MatIconModule} from '@angular/material/icon';
 import { UpdateProductsComponent } from './update-products/update-products.component';
+import { ViewerComponent } from './home/viewer/viewer.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import { UpdateProductsComponent } from './update-products/update-products.compo
     AdminProductsComponent,
     LoginComponent,
     SignupComponent,
-    UpdateProductsComponent
+    UpdateProductsComponent,
+    ViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +85,9 @@ import { UpdateProductsComponent } from './update-products/update-products.compo
     MatProgressSpinnerModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [
     AuthService, 

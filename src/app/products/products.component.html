@@ -1,4 +1,3 @@
-<p>products works!</p>
 <div  class="grid-container">
     <mat-card  class="dashboard-card" *ngFor="let product of products">
         <mat-card-header >
@@ -7,19 +6,20 @@
             </mat-card-title>
         </mat-card-header>  
         <mat-card-content class="dashboard-card-content">
-            <div class="card_text">{{ product.description }}</div>
+            <img class="center" src="olaj.unk"/>
+        </mat-card-content>
+        <mat-card-content class="dashboard-card-content">
+            <p>Termék ára:</p>
+            <div class="card_text" class="indent" >  <a class="oldprice">{{ product.oldPrice | currency:'HUF ' : 'symbol':'4.0'}}</a> {{ product.price | currency:'HUF ' : 'symbol':'4.0'}}</div>
+        </mat-card-content>
+        <p>Termék leírása: </p>
+        <mat-card-content class="dashboard-card-content">
+            <div class="card_text" class="indent">{{ product.description }}</div>
             <br>
         </mat-card-content>
-
-        <mat-card-content class="dashboard-card-content">
-            <div class="card_text">{{ product.oldPrice }}</div>
-        </mat-card-content>
-        <mat-card-content class="dashboard-card-content">
-            <div class="card_text"> <p>Written By: </p>{{ product.price }}</div>
-        </mat-card-content>
-    </mat-card>
+    <mat-divider></mat-divider>
     <br>
-    <button *ngIf="loggedInUser" mat-raised-button color="primary" (click)="changeComponent()" [routerLink]="'/update-products'">Update post</button>
-    <button *ngIf="loggedInUser"  mat-raised-button color="warn" (click)="delete(productsId)" [routerLink]="'/home'">Delete post</button>
-
+    <button  mat-raised-button color="primary" (click)="changeComponent()" [routerLink]="'/update-products'">Update product</button>
+    <button  mat-raised-button color="warn" (click)="delete(productsId)" [routerLink]="'/home'">Delete product</button>
+    </mat-card>
 </div>
