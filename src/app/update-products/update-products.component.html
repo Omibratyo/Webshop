@@ -1,1 +1,31 @@
-<p>update-products works!</p>
+<div class="main_component">
+    <div class="div-flex"  *ngFor="let product of products">
+      <h1> {{ product.title }} módosítása</h1>
+      <form [formGroup]="update" novalidate (ngSubmit)="onSubmit()">
+  
+        <mat-form-field>
+          <mat-label for="title">Termék neve: </mat-label>
+          <input matInput formControlName="title" [(ngModel)]="product.title">
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label for="oldPrice">Termék régi ára: </mat-label>
+          <input matInput formControlName="oldPrice" [(ngModel)]="product.oldPrice">
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label for="price">Termék új ára: </mat-label>
+          <input matInput formControlName="price" [(ngModel)]="product.price">
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label for="description">Termék leírása: </mat-label>
+          <textarea matInput formControlName="description" [(ngModel)]="product.description"></textarea>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Termék módosítása</button>
+        </mat-card-actions>
+      </form>   
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 import { ProductsService } from '../../app/shared/services/products.service';
@@ -22,11 +22,13 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router,
     private productsService: ProductsService,
     private SharingService: SharingService,
-    private authService: AuthService,
+    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
     this.productsService.loadProducts().subscribe(data =>{
+      //this.chosenImage = data;
+      this.loadImage(this.chosenImage);
       this.products = data;
     });
     
@@ -35,10 +37,9 @@ export class HomeComponent implements OnInit {
     }, error => {
       console.error(error);
     });
-
   }
 
-  loadImage(imageObject: Products){
+  loadImage(imageObject: Products | undefined){
     this.chosenImage = imageObject;
   }
 

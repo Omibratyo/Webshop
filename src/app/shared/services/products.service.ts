@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Products } from '../models/Products';
+import { ImgSrcDirective } from '@angular/flex-layout';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,17 @@ export class ProductsService {
 
   constructor(
     private afs: AngularFirestore,
-    private storage: AngularFireStorage,
-    private db: AngularFireDatabase
+    private storage: AngularFireStorage
   ) { }
 
   loadProducts(){
     return this.afs.collection<Products>(this.collectionName).valueChanges();
   }
 
+  loadImage(imageUrl: string) {
+    console.log(imageUrl);
+    return this.storage.ref(imageUrl).getDownloadURL();
+  }
 
   getProductsById(Id: string) {
     return this.afs.collection<Products>(this.collectionName, ref => ref.where('id', '==', Id).orderBy('price', 'desc')).valueChanges();
@@ -43,10 +47,6 @@ export class ProductsService {
 
   loadImageMeta(metaUrl: string): Observable<Array<Products>> {
     return this.afs.collection<Products>(this.collectionName).valueChanges();
-  }
-
-  loadImage(imageUrl: string) {
-    return this.storage.ref(imageUrl).getDownloadURL();
   }
 
 }

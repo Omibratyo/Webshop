@@ -18,8 +18,6 @@ import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -33,12 +31,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { ProductFormComponent } from './admin/product-form/product-form.component';
 import {MatIconModule} from '@angular/material/icon';
 import { UpdateProductsComponent } from './update-products/update-products.component';
 import { ViewerComponent } from './home/viewer/viewer.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import { CreateProductsComponent } from './create-products/create-products.component';
 
 @NgModule({
   declarations: [
@@ -49,12 +47,11 @@ import {MatDividerModule} from '@angular/material/divider';
     ShoppingCartComponent,
     CheckOutComponent,
     OrderSuccessComponent,
-    MyOrdersComponent,
-    AdminProductsComponent,
     LoginComponent,
     SignupComponent,
     UpdateProductsComponent,
-    ViewerComponent
+    ViewerComponent,
+    CreateProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +65,8 @@ import {MatDividerModule} from '@angular/material/divider';
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
       { path: 'login', component: LoginComponent},
       { path: 'signup', component: SignupComponent},
-      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]},
-      { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService]},
-      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]},
+      { path: 'update-products', component: UpdateProductsComponent, canActivate: [AuthGuardService]},
+      { path: 'create-products', component: CreateProductsComponent, canActivate: [AuthGuardService]}
     ]),
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

@@ -20,7 +20,6 @@ export class UserService {
       name: user.displayName,
       email: user.email
     });
-    console.log("macska");
   }
 
   get(uid: string){

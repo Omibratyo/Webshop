@@ -18,10 +18,7 @@ export class ViewerComponent implements OnInit {
   }  
 
   ngOnChanges(): void  {
-    //console.log("állat");
-    //console.log(this.imageInput);
     if (this.imageInput?.id) {
-      console.log("macska");
       this.productsService.loadImage(this.imageInput.image_url).subscribe(data => {
         this.loadedImage = data;
       });
