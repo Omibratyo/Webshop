@@ -13,6 +13,7 @@ import { ImgSrcDirective } from '@angular/flex-layout';
 export class ProductsService {
 
   collectionName = 'Products';
+  url='';
 
   constructor(
     private afs: AngularFirestore,

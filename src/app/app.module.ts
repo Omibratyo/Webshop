@@ -1,12 +1,11 @@
+import { CartService } from './shared/services/cart.service';
 import { SharingService } from './shared/services/sharing.service';
 import { SignupComponent } from './signup/signup.component';
 import { UserService } from './shared/services/user.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
-import { FirebaseAppModule, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -31,12 +30,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { UpdateProductsComponent } from './update-products/update-products.component';
 import { ViewerComponent } from './home/viewer/viewer.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { CreateProductsComponent } from './create-products/create-products.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
@@ -83,13 +83,15 @@ import { CreateProductsComponent } from './create-products/create-products.compo
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    AngularFireStorageModule
   ],
   providers: [
     AuthService, 
     AuthGuardService,
     UserService,
-    SharingService
+    SharingService,
+    CartService
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

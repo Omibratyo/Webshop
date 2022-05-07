@@ -1,1 +1,42 @@
-<p>shopping-cart works!</p>
+<ng-container *ngIf="products.length !=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sorszám</th>
+                            <th>Termék neve</th>
+                            <th>Termék ára</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of products; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.title}}</td>
+                            <th style="width: 12%;"> {{item.price | currency:'HUF ' : 'symbol':'4.0'}}</th>
+                            <td>
+                                <button (click)="removeItem(item)" ><mat-icon>delete</mat-icon></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button (click)="emptycart()" class="btn btn-danger">Kosár törlése</button></td>
+                            <td><button routerLink="" class="btn btn-primary">Vásárlás folytatása</button></td>
+                            <td><button (click)="emptycart()" routerLink="/order-success" class="btn btn-success">Rendelés leadása</button></td>
+                            <td><strong>Összesen : {{grandTotal | currency:'HUF ' : 'symbol':'4.0'}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="products.length ==0">
+    <div class="container">
+        <div class="center">
+            <img src="../../assets/cart.webp" alt="">
+            <h4>A kosarad üres!</h4>
+            <button routerLink="" class="btn btn-primary">Vásárlás most</button>
+        </div>
+    </div>
+</ng-container>

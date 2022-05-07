@@ -1,3 +1,4 @@
+import { CartService } from './../shared/services/cart.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router,
     private productsService: ProductsService,
     private SharingService: SharingService,
-    private authService: AuthService
+    private authService: AuthService,
+    private cartService: CartService
     ) { }
 
   ngOnInit(): void {
@@ -49,5 +51,9 @@ export class HomeComponent implements OnInit {
    console.log(this.productId);
 
    this.router.navigateByUrl('/products');
+  }
+
+  addToCart(item: any){
+    this.cartService.addtoCart(item);
   }
 }
