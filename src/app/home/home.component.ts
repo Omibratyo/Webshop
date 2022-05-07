@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   chosenImage?: Products;
   loadedImage?: string;
   productObject?: Array<Products>;
+  searchText;
 
   constructor(private router: Router,
     private productsService: ProductsService,

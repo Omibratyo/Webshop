@@ -37,6 +37,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { CreateProductsComponent } from './create-products/create-products.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     MatIconModule,
     MatCardModule,
     MatDividerModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     AuthService, 

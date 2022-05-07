@@ -157,3 +157,8 @@ h3, h4 {
     font-weight: bold;
     width: 288px;
 }
+input {
+    border-width: 3px;
+    border-color: black;
+    margin-bottom: 50px;
+}
